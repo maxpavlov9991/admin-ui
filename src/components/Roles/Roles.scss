@@ -1,0 +1,67 @@
+.Roles {
+  margin-top: 38px;
+
+  &__container {
+    width: calc(100vw - 300px);
+    display: grid;
+    grid-template-columns: 216px calc(100vw - 600px) 82px;
+    font-size: 0.875rem;
+  }
+
+  &__names {
+    display: grid;
+    grid-template-columns: 216px;
+    grid-auto-rows: 24px;
+    grid-row-gap: 12px;
+
+    & > span {
+      padding-left: 15px;
+    }
+  }
+
+  &__table {
+    overflow-x: auto;
+    display: grid;
+    grid-template-columns: repeat(7, 96px);
+    align-items: start;
+    grid-column-gap: 24px;
+    grid-row-gap: 12px;
+
+    &-row {
+      display: contents;
+    }
+
+    &-cell {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__crud {
+    & > button {
+      border-radius: 50%;
+      display: flex;
+      background: var(--gray-medium-2);
+      justify-content: center;
+      align-items: center;
+      width: 20px;
+      height: 20px;
+      margin: 0;
+      padding: 0;
+      border: none;
+
+      &:not(:first-child) {
+        margin-left: 4px;
+      }
+
+      &[data-active='true'] {
+        background: var(--primary-light);
+        color: var(--white);
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}

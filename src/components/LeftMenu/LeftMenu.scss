@@ -1,0 +1,56 @@
+.LeftMenu {
+  &__container {
+    box-shadow: inset -1px 0 0 0 var(--menu-border-color);
+    min-width: 18.75rem;
+    background: var(--menu-background);
+
+    * {
+      font-weight: 300;
+      letter-spacing: -0.333333px;
+    }
+  }
+
+  &__top-part {
+    &--logoContainer {
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+
+      span {
+        margin-left: 0.25rem;
+        font-size: 1.125rem;
+        line-height: 20px;
+        color: var(--primary);
+        height: 2rem;
+        width: 5.625rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+
+  &__user-info {
+    flex-direction: column;
+
+    & > * {
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.125rem;
+    }
+
+    &--name {
+      line-height: 1.25rem;
+      font-size: 1.125rem;
+    }
+
+    &--email {
+      line-height: 1rem;
+      font-size: 0.875rem;
+    }
+  }
+}

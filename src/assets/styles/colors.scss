@@ -1,0 +1,35 @@
+$white: #fff;
+
+$black: #000;
+$text-color: $black;
+$black-light: #4f4f4f;
+
+$gray-light: #f2f2f2;
+$gray-light-2: #e9e9e9;
+$gray-medium: #bdbdbd;
+$gray-medium-2: #C4C4C4;
+$gray-dark: #828282;
+
+$primary: #1f26cd;
+$menu-border-color: #1f26cd;
+
+$primary-light: #696ff9;
+
+$danger: red;
+
+$border-color: $gray-medium;
+
+$menu-background: $white;
+
+
+$theme-colors: (
+        "text-color": $black,
+        "menu-background": $menu-background,
+        "menu-border-color": $menu-border-color,
+        "gray-dark": $gray-dark,
+        "gray-light-2": $gray-light-2,
+        "gray-medium": $gray-medium,
+        "gray-medium-2": $gray-medium-2,
+        "primary-light": $primary-light,
+        "white": $white
+);

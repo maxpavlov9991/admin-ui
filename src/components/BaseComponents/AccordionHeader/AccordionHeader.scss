@@ -1,0 +1,17 @@
+.AccordionHeader {
+  height: 1.5rem;
+  background: var(--gray-light-2);
+  border: none;
+  text-align: start;
+  padding: 0;
+  display: inherit;
+  color: var(--text-color);
+
+  &:focus {
+    outline: none;
+  }
+
+  &__active {
+    //box-shadow: 0 4px 2px -1px rgba(0, 0, 0, 0.25);
+  }
+}

@@ -1,0 +1,32 @@
+@import './colors';
+@import './variables';
+@import './operations';
+@import './fonts';
+@import './layout';
+@import './elements/form';
+@import '~bootstrap/scss/bootstrap';
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+
+  font-size: 1rem;
+}
+
+input, html, body, button {
+  font-style: normal;
+  font-weight: 300;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}

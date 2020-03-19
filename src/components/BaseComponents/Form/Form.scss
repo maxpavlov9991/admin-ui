@@ -1,0 +1,28 @@
+.Form__ {
+  &table {
+    display: grid;
+
+    &--grid {
+      grid-template-columns: 13rem auto;
+      grid-row-gap: 0.875rem;
+      grid-auto-rows: 1.5rem;
+    }
+
+    span {
+      font-style: normal;
+      font-weight: 300;
+      font-size: 0.875rem;
+      line-height: 1rem;
+      display: flex;
+      align-items: center;
+      letter-spacing: -0.333333px;
+      padding-right: 0.75rem;
+
+      & > div {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}

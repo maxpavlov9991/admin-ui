@@ -1,0 +1,11 @@
+{
+  "admin": {
+    "name": "admin",
+    "links": [
+      {
+        "label": "Роли",
+        "url": "/"
+      }
+    ]
+  }
+}
