@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        changePermission: (roleName, field, permission) => dispatch(rolesPermissionsActions.resetPermissions(roleName, field, permission))
+        changePermission: (roleName, field, permission) => dispatch(rolesPermissionsActions.resetRolePermission({roleName, field, permission}))
     }
 }
 

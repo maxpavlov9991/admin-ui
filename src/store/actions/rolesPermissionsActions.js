@@ -4,4 +4,9 @@ const moduleName = 'rolesPermissions';
 
 const createAction = actionCreator(moduleName);
 
-export const resetPermissions = createAction(BASE_ACTIONS.RESET, 'permissions');
+export const resetRolePermission = createAction(null, null, (payload) => {
+    return {
+        type: 'resetRolePermission',
+        payload
+    }
+});

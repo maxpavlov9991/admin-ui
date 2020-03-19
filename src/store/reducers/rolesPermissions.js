@@ -222,8 +222,17 @@ roles: [
     },
 ]};
 
-const customHandler = {};
+const customHandler = {
+    resetRolePermission: (state, action) => {
+        console.log(action.payload)
+        return state
+    }
+};
 
-const rolePermissions = actionHandler(customHandler, initialState);
+const rolesPermissions = actionHandler(customHandler, initialState);
 
-export default rolePermissions;
+// rolesPermission - функция, возвращающая стейт в зависимости от actionType агрументы (state, action)
+// она и есть редьюсер!!!
+
+
+export default rolesPermissions;
