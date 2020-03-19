@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import actionHandler from '../utils/actionHandler';
 
 export const initialState = {
@@ -224,8 +225,11 @@ roles: [
 
 const customHandler = {
     resetRolePermission: (state, action) => {
-        console.log(action.payload)
-        return state
+        const newState = _.cloneDeep(state)
+        console.log(newState.roles.find(role => role.name === action.payload.roleName))
+        // const field = newState.roles.find(role => role.name === ).permissions[action.payload.field]
+        // field[action.payload.permission] = !field[action.payload.permission]
+        return newState
     }
 };
 

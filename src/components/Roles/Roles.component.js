@@ -3,10 +3,8 @@ import React from 'react';
 import './Roles.scss';
 
 const Roles = (props) => {
-    console.log(props)
 
     const handleChangePermission = (roleName, field, permission) => {
-        console.log(roleName, field, permission)
         props.changePermission(roleName, field, permission)
     }
 
