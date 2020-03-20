@@ -17,3 +17,16 @@ export const createRole = createAction(null, null, (payload) => {
         payload
     }
 })
+
+export const loadData = createAction(null, null, () => {
+    return {
+        type: 'loadData'
+    }
+})
+
+export const putData = createAction(null, null, (payload) => {
+    return {
+        type: 'putData',
+        payload
+    }
+})

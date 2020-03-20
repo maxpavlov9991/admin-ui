@@ -1,0 +1,109 @@
+{
+    "name": "",
+    "permissions": {
+      "model": {
+        "create": false,
+        "read": false,
+        "update": false,
+        "delete": false,
+        "_id": "5e4eff419badd700155f3a4d",
+        "id": "model"
+      },
+      "works": {
+        "create": false,
+        "read": false,
+        "update": false,
+        "delete": false,
+        "_id": "5e4eff419badd700155f3a4c",
+        "id": "works"
+      },
+      "technology": {
+        "create": false,
+        "read": false,
+        "update": false,
+        "delete": false,
+        "_id": "5e4eff419badd700155f3a4b",
+        "id": "technology"
+      },
+      "resources": {
+        "create": false,
+        "read": false,
+        "update": false,
+        "delete": false,
+        "_id": "5e4eff419badd700155f3a4a",
+        "id": "resources"
+      },
+      "charts": {
+        "create": false,
+        "read": false,
+        "update": false,
+        "delete": false,
+        "_id": "5e4eff419badd700155f3a49",
+        "id": "charts"
+      },
+      "execution_log": {
+        "create": false,
+        "read": false,
+        "update": false,
+        "delete": false,
+        "_id": "5e4eff419badd700155f3a48",
+        "id": "execution_log"
+      },
+      "execution": {
+        "create": false,
+        "read": false,
+        "update": false,
+        "delete": false,
+        "_id": "5e4eff419badd700155f3a47",
+        "id": "execution"
+      },
+      "report": {
+        "create": false,
+        "read": false,
+        "update": false,
+        "delete": false,
+        "_id": "5e4eff419badd700155f3a46",
+        "id": "report"
+      },
+      "tender": {
+        "create": false,
+        "read": false,
+        "update": false,
+        "delete": false,
+        "_id": "5e4eff419badd700155f3a45",
+        "id": "tender"
+      },
+      "suppliers": {
+        "create": false,
+        "read": false,
+        "update": false,
+        "delete": false,
+        "_id": "5e4eff419badd700155f3a44",
+        "id": "suppliers"
+      },
+      "documents": {
+        "create": false,
+        "read": false,
+        "update": false,
+        "delete": false,
+        "_id": "5e4eff419badd700155f3a43",
+        "id": "documents"
+      },
+      "exploitation": {
+        "create": false,
+        "read": false,
+        "update": false,
+        "delete": false,
+        "_id": "5e4eff419badd700155f3a42",
+        "id": "exploitation"
+      },
+      "prices": {
+        "create": false,
+        "read": false,
+        "update": false,
+        "delete": false,
+        "_id": "5e4eff419badd700155f3a41",
+        "id": "prices"
+      }
+    }
+  }

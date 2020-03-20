@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Модель",
+    "field": "model"
+  },
+  {
+    "name": "Работы",
+    "field": "works"
+  },
+  {
+    "name": "Ресурсы",
+    "field": "resources"
+  },
+  {
+    "name": "Технология",
+    "field": "technology"
+  },
+  {
+    "name": "График",
+    "field": "charts"
+  },
+  {
+    "name": "Тендер",
+    "field": "tender"
+  },
+  {
+    "name": "Журнал",
+    "field": "report"
+  }
+]
