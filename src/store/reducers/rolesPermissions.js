@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import { cloneDeep } from 'lodash'
 import actionHandler from '../utils/actionHandler';
 
 export const initialState = {
@@ -225,12 +225,21 @@ roles: [
 
 const customHandler = {
     resetRolePermission: (state, action) => {
-        const newState = _.cloneDeep(state)
-        console.log(newState.roles.find(role => role.name === action.payload.roleName))
-        // const field = newState.roles.find(role => role.name === ).permissions[action.payload.field]
-        // field[action.payload.permission] = !field[action.payload.permission]
+        const newState = cloneDeep(state)
+        const field = newState.roles.find(role => role.name === action.payload.roleName).permissions[action.payload.field]
+        field[action.payload.permission] = !field[action.payload.permission]
         return newState
-    }
+    },
+    createRole: (state, action) => {
+        const newState = cloneDeep(state)
+        const newRole = cloneDeep(action.payload)
+        newRole.name = newRole.name.trim()
+        if (action.payload.name === '' || newState.roles.find(role => role.name === action.payload.name)) {
+            return newState
+        }
+        newState.roles.push(newRole)
+        return newState
+    },
 };
 
 const rolesPermissions = actionHandler(customHandler, initialState);

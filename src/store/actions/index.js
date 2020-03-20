@@ -1,8 +1,8 @@
 import * as roleRightsActions from './roleRights';
-import * as rolesPermissionsActions from './rolesPermissionsActions';
+import * as rolesActions from './rolesActions';
 
 
 export {
     roleRightsActions,
-    rolesPermissionsActions,
+    rolesActions,
 };

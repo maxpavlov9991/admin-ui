@@ -7,5 +7,5 @@ import rolesPermissions from './rolesPermissions'
 export default combineReducers({
     users,
     roleRights,
-    rolesPermissions,
+    rolesPermissions
 });

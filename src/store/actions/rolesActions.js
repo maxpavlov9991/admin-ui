@@ -10,3 +10,10 @@ export const resetRolePermission = createAction(null, null, (payload) => {
         payload
     }
 });
+
+export const createRole = createAction(null, null, (payload) => {
+    return {
+        type: 'createRole',
+        payload
+    }
+})

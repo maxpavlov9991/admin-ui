@@ -34,8 +34,41 @@
     &-cell {
       display: flex;
       justify-content: center;
+
     }
   }
+
+  &__actions {
+    display: grid;
+    grid-template-columns: 216px;
+    grid-auto-rows: 24px;
+    grid-row-gap: 12px;
+    align-items: center;
+
+    & > button {
+      border-radius: 50%;
+      display: flex;
+      background: var(--gray-medium-2);
+      justify-content: center;
+      align-content: center;
+      width: 40px;
+      height: 20px;
+      margin: 0;
+      padding: 0;
+      border: none;
+
+      &:not(:first-child) {
+        margin-left: 4px;
+      }
+      &:hover {
+        background: var(--primary-light);
+        color: var(--white);
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+}
 
   &__crud {
     & > button {
