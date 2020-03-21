@@ -52,7 +52,6 @@ const Roles = (props) => {
 
     const handleStartSelection = () => {
         setSelection(!selection)
-        console.log(selection)
     }
 
     const handleSelectRow = (role) => {
@@ -82,38 +81,36 @@ const Roles = (props) => {
             </div>
             <div className='table-body'>
                 {props.roles.map((r, i) => (
-                    <div key={i} className='table-row' onClick={() => handleSelectRow(r)}>
-                        <div className='row-name'>
-                            <span>{r.name}</span>
-                        </div>
-                        <div className='row-field'>
-                            {props.permissions.map((p, i) => (
-                                <div key={i} className='field-item'>
-                                    <PermissionButton variant={calcVariant(r.permissions[p.field])} disable={selection} onClick={() => handleChangePermission(r.name, p.field)}/>
-                                </div>
-                            ))}
-                        </div>
-                        {!selection && <div className='row-action'>
-                            <ActionButton variant='create' onClick={() => handleCreateNewRole(r)}>CR</ActionButton>
-                            <ActionButton variant='delete' onClick={() => handleDeleteRole(r.name)}>RM</ActionButton>
-                        </div>}
-                    </div>
-                ))}
-                {newRole && (<div className='table-row newRow'>
+                <div key={i} className='table-row' onClick={() => handleSelectRow(r)}>
                     <div className='row-name'>
-                        {newRole &&
-                            <input autoFocus onChange={handleChangeNewRoleName} onBlur={handleOnBlurNewRole} onKeyDown={handleEnterKeyDown} value={newRole.name}></input>}
+                        <span>{r.name}</span>
                     </div>
                     <div className='row-field'>
-                        {props.permissions.map((p, i) => (
-                            <div key={i} className='field-item'>
-                                <PermissionButton variant={calcVariant(newRole.permissions[p.field])} onClick={() => handleChangePermission(r.name, p.field)}/>
-                            </div>
-                        ))}
+                    {props.permissions.map((p, i) => (
+                        <div key={i} className='field-item'>
+                            <PermissionButton variant={calcVariant(r.permissions[p.field])} disable={selection} onClick={() => handleChangePermission(r.name, p.field)}/>
+                        </div>))}
                     </div>
-                </div>)}
+                    {!selection &&
+                    <div className='row-action'>
+                        <ActionButton variant='create' onClick={() => handleCreateNewRole(r)}>CR</ActionButton>
+                        <ActionButton variant='delete' onClick={() => handleDeleteRole(r.name)}>RM</ActionButton>
+                    </div>}
+                </div>))}
+                {newRole &&
+                <div className='table-row newRow'>
+                    <div className='row-name'>
+                    {newRole && <input autoFocus onChange={handleChangeNewRoleName} onBlur={handleOnBlurNewRole} onKeyDown={handleEnterKeyDown} value={newRole.name}></input>}
+                    </div>
+                    <div className='row-field'>
+                    {props.permissions.map((p, i) => (
+                        <div key={i} className='field-item'>
+                            <PermissionButton variant={calcVariant(newRole.permissions[p.field])} onClick={() => handleChangePermission(r.name, p.field)}/>
+                        </div>
+                    ))}
+                    </div>
+                </div>}
                 {!newRole && 
-                <div>
                     <div className='table-row row-btn'>
                         <div className='row-name'>
                             <ActionButton variant='add' onClick={() => handleCreateNewRole(null)}/>
@@ -121,19 +118,19 @@ const Roles = (props) => {
                         <div className='row-description'>
                             <span>Добавить новую роль со стандартными значениями</span>
                         </div>
+                    </div>}
+                {!newRole && 
+                <div className={`table-row row-btn${(selection) ? ' selected' : ''}`}>
+                    <div className='row-name'>
+                        <ActionButton variant='create' active={selection} onClick={handleStartSelection}/>
                     </div>
-                    <div className={`table-row row-btn${(selection) ? ' selected' : ''}`}>
-                        <div className='row-name'>
-                            <ActionButton variant='create' active={selection} onClick={handleStartSelection}/>
-                        </div>
-                        <div className='row-description'>
-                            <span>Нажмите кнопку "Создать" и выберите существующую роль</span>
-                        </div>
+                    <div className='row-description'>
+                        <span>Нажмите кнопку "Создать" и выберите существующую роль</span>
                     </div>
                 </div>}
             </div>
         </div>
     )
-    }
+}
 
 export default Roles;

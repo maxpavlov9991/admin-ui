@@ -51,8 +51,4 @@ const customHandler = {
 
 const rolesPermissions = actionHandler(customHandler, initialState);
 
-// rolesPermission - функция, возвращающая стейт в зависимости от actionType агрументы (state, action)
-// она и есть редьюсер!!!
-
-
 export default rolesPermissions;
