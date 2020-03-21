@@ -28,7 +28,7 @@
     "field": "report"
   },
   {
-    "name": "Вычисления",
-    "field": "execution"
+    "name": "Документы",
+    "field": "documents"
   }
 ]
