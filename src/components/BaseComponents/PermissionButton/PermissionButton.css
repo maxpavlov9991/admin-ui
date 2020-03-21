@@ -1,0 +1,7 @@
+.disable {
+    cursor: default;
+}
+
+.disable:hover {
+    cursor: default;
+}

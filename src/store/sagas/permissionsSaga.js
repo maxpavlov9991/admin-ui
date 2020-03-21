@@ -1,6 +1,6 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 import { permissionListActions } from '../actions'
-import list from './rolesJSON/LIST_PERMISSIONS'
+import list from './serverData/LIST_PERMISSIONS'
 
 function fetchData() {
     // There will be a real backend request.

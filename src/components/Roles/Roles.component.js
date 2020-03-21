@@ -17,6 +17,7 @@ const Roles = (props) => {
     }, [])
 
     const [newRole, setNewRole] = useState(null)
+    const [selection, setSelection] = useState(false)
 
     const handleChangePermission = (name, field) => {
         props.changePermission(name, field)
@@ -49,12 +50,17 @@ const Roles = (props) => {
         props.deleteRole(name)
     }
 
-    const handleChangeNewRolePermission = (field, permission) => {
-        const newRoleState = cloneDeep(newRole)
-        const newField = newRoleState.permissions[field]
-        newField[permission] = !newField[permission]
-        setNewRole(newRoleState)
+    const handleStartSelection = () => {
+        setSelection(!selection)
+        console.log(selection)
     }
+
+    const handleSelectRow = (role) => {
+        if (selection) setNewRole((role) ? { name: '', permissions: role.permissions} : defaultRole)
+        setSelection(false)
+    }
+
+
 
     const calcVariant = (field) => {
         return (field.create && field.read && field.update && field.delete) ? 'edit'
@@ -65,7 +71,7 @@ const Roles = (props) => {
     return (
         <div className='table'>
             <div className='table-header'>
-                <div className='row-name'>Names</div>
+                <div className='row-name'>Название роли</div>
                 <div className='row-field'>
                     {props.permissions.map((p, i) => (
                         <span key={i}>
@@ -73,25 +79,24 @@ const Roles = (props) => {
                         </span>
                     ))}
                 </div>
-                <div className='row-action'>Actions</div>
             </div>
             <div className='table-body'>
                 {props.roles.map((r, i) => (
-                    <div key={i} className='table-row'>
+                    <div key={i} className='table-row' onClick={() => handleSelectRow(r)}>
                         <div className='row-name'>
                             <span>{r.name}</span>
                         </div>
                         <div className='row-field'>
                             {props.permissions.map((p, i) => (
                                 <div key={i} className='field-item'>
-                                    <PermissionButton variant={calcVariant(r.permissions[p.field])} onClick={() => handleChangePermission(r.name, p.field)}/>
+                                    <PermissionButton variant={calcVariant(r.permissions[p.field])} disable={selection} onClick={() => handleChangePermission(r.name, p.field)}/>
                                 </div>
                             ))}
                         </div>
-                        <div className='row-action'>
+                        {!selection && <div className='row-action'>
                             <ActionButton variant='create' onClick={() => handleCreateNewRole(r)}>CR</ActionButton>
                             <ActionButton variant='delete' onClick={() => handleDeleteRole(r.name)}>RM</ActionButton>
-                        </div>
+                        </div>}
                     </div>
                 ))}
                 {newRole && (<div className='table-row newRow'>
@@ -111,15 +116,15 @@ const Roles = (props) => {
                 <div>
                     <div className='table-row row-btn'>
                         <div className='row-name'>
-                            <button onClick={() => handleCreateNewRole(null)}>Добавить</button>
+                            <ActionButton variant='add' onClick={() => handleCreateNewRole(null)}/>
                         </div>
                         <div className='row-description'>
                             <span>Добавить новую роль со стандартными значениями</span>
                         </div>
                     </div>
-                    <div className='table-row row-btn'>
+                    <div className={`table-row row-btn${(selection) ? ' selected' : ''}`}>
                         <div className='row-name'>
-                            <button onClick={() => {console.log(props)}}>Создать</button>
+                            <ActionButton variant='create' active={selection} onClick={handleStartSelection}/>
                         </div>
                         <div className='row-description'>
                             <span>Нажмите кнопку "Создать" и выберите существующую роль</span>

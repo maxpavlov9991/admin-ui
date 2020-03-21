@@ -4,6 +4,8 @@ import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@material-ui/icons/VisibilityOffOutlined';
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 
+import './PermissionButton.css'
+
 
 const PermissionButton = (props) => {
 
@@ -14,8 +16,12 @@ const PermissionButton = (props) => {
             : null
     }
 
+    const calcDisable = (disable) => {
+        return (disable) ? 'disable' : null
+    }
+
     return (
-        <button onClick={props.onClick}>
+        <button onClick={(props.disable) ? null : props.onClick} className={calcDisable(props.disable)}>
             {calcVariant(props.variant)}
         </button>
     )

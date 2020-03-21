@@ -1,6 +1,6 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 import { rolesActions } from '../actions'
-import roles from './rolesJSON/roles'
+import roles from './serverData/roles'
 
 function fetchData() {
     // There will be a real backend request.

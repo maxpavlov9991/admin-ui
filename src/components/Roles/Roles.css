@@ -9,7 +9,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 5px;
-    grid-auto-rows: 50px;
+    grid-auto-rows: 150px 1fr;
 }
 
 .table-header {
@@ -17,6 +17,10 @@
     grid-template-columns: 300px 1fr 100px;
     grid-column-gap: 5px;
     align-items: center;
+}
+
+.table-header > .row-field > span {
+    transform: rotate(-90deg);
 }
 
 .table-body {
@@ -40,11 +44,17 @@
     display: block;
 }
 
-.row-btn > .row-description {
-    display: none
+
+.selected {
+    background-color: rgb(255, 160, 160)!important;
 }
-.row-btn:hover > .row-description {
-    display: block;
+
+.selected:hover {
+    background-color: rgb(255, 160, 160)!important;
+}
+
+.selected > .row-description {
+    color: black;
 }
 
 
@@ -58,7 +68,18 @@
 }
 
 .row-name > button {
-    width: 100%;
+    border-radius: 50%;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+}
+
+.row-name > button:focus {
+    outline: none;
 }
 
 .row-name > input {
@@ -66,16 +87,14 @@
     padding-left: 5px;
 }
 
-
 .row-field {
     display: grid;
-    grid-auto-columns: 100px;
+    grid-auto-columns: 50px;
     grid-auto-flow: column;
     grid-column-gap: 5px;
     align-items: center;
     justify-items: center;
 }
-
 
 .row-field button {
     border-radius: 50%;
@@ -127,16 +146,16 @@
 }
 
 .newRow {
-    background-color: rgb(255, 206, 206);
+    background-color: rgb(210, 255, 206);
 }
 
 .newRow > .row-field button {
-    color: rgb(255, 133, 133);
+    color: rgb(155, 155, 155);
     cursor: default;
 }
 
 .newRow:hover {
-    background-color: rgb(255, 206, 206);
+    background-color: rgb(210, 255, 206);
 }
 
 
