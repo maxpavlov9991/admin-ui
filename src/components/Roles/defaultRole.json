@@ -3,7 +3,7 @@
     "permissions": {
       "model": {
         "create": false,
-        "read": false,
+        "read": true,
         "update": false,
         "delete": false,
         "_id": "5e4eff419badd700155f3a4d",
@@ -11,7 +11,7 @@
       },
       "works": {
         "create": false,
-        "read": false,
+        "read": true,
         "update": false,
         "delete": false,
         "_id": "5e4eff419badd700155f3a4c",
@@ -19,7 +19,7 @@
       },
       "technology": {
         "create": false,
-        "read": false,
+        "read": true,
         "update": false,
         "delete": false,
         "_id": "5e4eff419badd700155f3a4b",
@@ -27,7 +27,7 @@
       },
       "resources": {
         "create": false,
-        "read": false,
+        "read": true,
         "update": false,
         "delete": false,
         "_id": "5e4eff419badd700155f3a4a",
@@ -35,7 +35,7 @@
       },
       "charts": {
         "create": false,
-        "read": false,
+        "read": true,
         "update": false,
         "delete": false,
         "_id": "5e4eff419badd700155f3a49",
@@ -43,7 +43,7 @@
       },
       "execution_log": {
         "create": false,
-        "read": false,
+        "read": true,
         "update": false,
         "delete": false,
         "_id": "5e4eff419badd700155f3a48",
@@ -51,7 +51,7 @@
       },
       "execution": {
         "create": false,
-        "read": false,
+        "read": true,
         "update": false,
         "delete": false,
         "_id": "5e4eff419badd700155f3a47",
@@ -59,7 +59,7 @@
       },
       "report": {
         "create": false,
-        "read": false,
+        "read": true,
         "update": false,
         "delete": false,
         "_id": "5e4eff419badd700155f3a46",
@@ -67,7 +67,7 @@
       },
       "tender": {
         "create": false,
-        "read": false,
+        "read": true,
         "update": false,
         "delete": false,
         "_id": "5e4eff419badd700155f3a45",
@@ -75,7 +75,7 @@
       },
       "suppliers": {
         "create": false,
-        "read": false,
+        "read": true,
         "update": false,
         "delete": false,
         "_id": "5e4eff419badd700155f3a44",
@@ -83,7 +83,7 @@
       },
       "documents": {
         "create": false,
-        "read": false,
+        "read": true,
         "update": false,
         "delete": false,
         "_id": "5e4eff419badd700155f3a43",
@@ -91,7 +91,7 @@
       },
       "exploitation": {
         "create": false,
-        "read": false,
+        "read": true,
         "update": false,
         "delete": false,
         "_id": "5e4eff419badd700155f3a42",
@@ -99,7 +99,7 @@
       },
       "prices": {
         "create": false,
-        "read": false,
+        "read": true,
         "update": false,
         "delete": false,
         "_id": "5e4eff419badd700155f3a41",

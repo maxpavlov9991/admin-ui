@@ -4,9 +4,9 @@ const moduleName = 'rolesPermissions';
 
 const createAction = actionCreator(moduleName);
 
-export const resetRolePermission = createAction(null, null, (payload) => {
+export const changePermission = createAction(null, null, (payload) => {
     return {
-        type: 'resetRolePermission',
+        type: 'changePermission',
         payload
     }
 });
@@ -30,3 +30,12 @@ export const putData = createAction(null, null, (payload) => {
         payload
     }
 })
+
+
+export const deleteRole = createAction(null, null, (payload) => {
+    return {
+        type: 'deleteRole',
+        payload
+    }
+})
+

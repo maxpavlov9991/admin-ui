@@ -1,0 +1,1 @@
+export const permissions = (state) => state.getIn(['permissionList', 'permissions']) || {};

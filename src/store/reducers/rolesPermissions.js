@@ -11,10 +11,25 @@ const customHandler = {
         const newState = { roles }
         return newState
     },
-    resetRolePermission: (state, action) => {
+    changePermission: (state, action) => {
         const newState = cloneDeep(state)
-        const field = newState.roles.find(role => role.name === action.payload.roleName).permissions[action.payload.field]
-        field[action.payload.permission] = !field[action.payload.permission]
+        const newField = newState.roles.find(role => role.name === action.payload.name).permissions[action.payload.field]
+        if (newField.create && newField.read && newField.update && newField.delete) {
+            newField.create = false
+            newField.read = false
+            newField.update = false
+            newField.delete = false
+        } else if (newField.read) {
+            newField.create = true
+            newField.read = true
+            newField.update = true
+            newField.delete = true
+        } else {
+            newField.create = false
+            newField.read = true
+            newField.update = false
+            newField.delete = false
+        }
         return newState
     },
     createRole: (state, action) => {
@@ -27,6 +42,11 @@ const customHandler = {
         newState.roles.push(newRole)
         return newState
     },
+    deleteRole: (state, action) => {
+        const newState = cloneDeep(state)
+        newState.roles.splice(newState.roles.findIndex((role => role.name === action.payload)), 1)
+        return newState
+    }
 };
 
 const rolesPermissions = actionHandler(customHandler, initialState);

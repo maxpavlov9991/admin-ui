@@ -4,6 +4,7 @@ import createSagaMiddleware, { END } from 'redux-saga';
 import rootReducer from './reducers';
 import sagas from './sagas';
 import watchLoadData from './sagas/rolesSaga'
+import watchLoadList from './sagas/permissionsSaga'
 
 const configureStore = (initialState) => {
     const sagaMiddleware = createSagaMiddleware();
@@ -28,6 +29,7 @@ const configureStore = (initialState) => {
     }
     sagaMiddleware.run(sagas);
     sagaMiddleware.run(watchLoadData)
+    sagaMiddleware.run(watchLoadList)
     store.close = () => store.dispatch(END);
     return store;
 };

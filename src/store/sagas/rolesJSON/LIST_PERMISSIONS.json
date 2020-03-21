@@ -26,5 +26,9 @@
   {
     "name": "Журнал",
     "field": "report"
+  },
+  {
+    "name": "Вычисления",
+    "field": "execution"
   }
 ]

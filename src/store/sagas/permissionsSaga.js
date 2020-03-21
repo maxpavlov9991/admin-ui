@@ -1,10 +1,10 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
-import { rolesActions } from '../actions'
-import roles from './rolesJSON/roles'
+import { permissionListActions } from '../actions'
+import list from './rolesJSON/LIST_PERMISSIONS'
 
 function fetchData() {
     // There will be a real backend request.
-    return roles
+    return list
     // return fetch('http://server/getRolesPermissions')
     //     .then(response => response.json())
 }
@@ -12,7 +12,7 @@ function fetchData() {
 function* workerLoadData() {
     const data = yield call(fetchData)
 
-    yield put(rolesActions.putData(data))
+    yield put(permissionListActions.putList(data))
 }
 
 export default function* watchLoadData() {

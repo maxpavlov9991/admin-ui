@@ -1,27 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { cloneDeep } from 'lodash'
 
-import LIST_PERMISSIONS from './rolesJSON/LIST_PERMISSIONS.json'
-import defaultRole from './rolesJSON/defaultRole'
+import defaultRole from './defaultRole'
+import PermissionButton from '../BaseComponents/PermissionButton'
+import ActionButton from '../BaseComponents/ActionButton'
 
-import './Roles.scss';
 
+import './Roles.css';
 
 
 
 const Roles = (props) => {
     useEffect(() => {
         props.loadData()
+        props.loadList()
     }, [])
 
     const [newRole, setNewRole] = useState(null)
 
-    const handleChangePermission = (roleName, field, permission) => {
-        props.changePermission(roleName, field, permission)
+    const handleChangePermission = (name, field) => {
+        props.changePermission(name, field)
     }
 
     const handleCreateNewRole = (role) => {
-        setNewRole((role) ? role : defaultRole)
+        setNewRole((role) ? { name: '', permissions: role.permissions} : defaultRole)
     }
 
     const handleChangeNewRoleName = (event) => {
@@ -43,6 +45,10 @@ const Roles = (props) => {
         }
     }
 
+    const handleDeleteRole = (name) => {
+        props.deleteRole(name)
+    }
+
     const handleChangeNewRolePermission = (field, permission) => {
         const newRoleState = cloneDeep(newRole)
         const newField = newRoleState.permissions[field]
@@ -50,57 +56,79 @@ const Roles = (props) => {
         setNewRole(newRoleState)
     }
 
+    const calcVariant = (field) => {
+        return (field.create && field.read && field.update && field.delete) ? 'edit'
+            : (field.read) ? 'read'
+            : 'noaccess'
+    }
+
     return (
-        <div className='Roles'>
-            <button onClick={() => props.loadData()}>a</button>
-            <div className='Roles__container'>
-                <div className='Roles__names'>
-                    <span/>
-                    {props.roles.map((r, i) => (<span key={i} className={`role-${i}`} >{r.name}</span>))}
-                    {newRole && <input autoFocus onChange={handleChangeNewRoleName} onBlur={handleOnBlurNewRole} onKeyDown={handleEnterKeyDown} value={newRole.name}></input>}
-                </div>
-                <div className='Roles__table'>
-                    {LIST_PERMISSIONS.map((p, i) => (
-                        <span key={i} className='Roles__table-cell'>{p.name}</span>
+        <div className='table'>
+            <div className='table-header'>
+                <div className='row-name'>Names</div>
+                <div className='row-field'>
+                    {props.permissions.map((p, i) => (
+                        <span key={i}>
+                            {p.name}
+                        </span>
                     ))}
-                    {props.roles.map((r, i) => (
-                        <div key={i} className={`Roles__table-row role-${i}`}>
-                            {LIST_PERMISSIONS.map((p,i) => (
-                                <div className='Roles__table-cell Roles__crud' key={i}>
-                                    <button data-active={r.permissions[p.field].create} onClick={() => handleChangePermission(r.name, p.field, 'create')}>C</button>
-                                    <button data-active={r.permissions[p.field].read} onClick={() => handleChangePermission(r.name, p.field, 'read')}>R</button>
-                                    <button data-active={r.permissions[p.field].update} onClick={() => handleChangePermission(r.name, p.field, 'update')}>U</button>
-                                    <button data-active={r.permissions[p.field].delete} onClick={() => handleChangePermission(r.name, p.field, 'delete')}>D</button>
+                </div>
+                <div className='row-action'>Actions</div>
+            </div>
+            <div className='table-body'>
+                {props.roles.map((r, i) => (
+                    <div key={i} className='table-row'>
+                        <div className='row-name'>
+                            <span>{r.name}</span>
+                        </div>
+                        <div className='row-field'>
+                            {props.permissions.map((p, i) => (
+                                <div key={i} className='field-item'>
+                                    <PermissionButton variant={calcVariant(r.permissions[p.field])} onClick={() => handleChangePermission(r.name, p.field)}/>
                                 </div>
                             ))}
                         </div>
-                    ))}
-                    {newRole && (
-                        <div className='Roles__table-row'>
-                            {LIST_PERMISSIONS.map((p,i) => (
-                                <div className='Roles__table-cell Roles__crud' key={i}>
-                                    <button data-active={newRole.permissions[p.field].create} onClick={() => handleChangeNewRolePermission(p.field, 'create')}>C</button>
-                                    <button data-active={newRole.permissions[p.field].read} onClick={() => handleChangeNewRolePermission(p.field, 'read')}>R</button>
-                                    <button data-active={newRole.permissions[p.field].update} onClick={() => handleChangeNewRolePermission(p.field, 'update')}>U</button>
-                                    <button data-active={newRole.permissions[p.field].delete} onClick={() => handleChangeNewRolePermission(p.field, 'delete')}>D</button>
-                                </div>
-                            ))}
+                        <div className='row-action'>
+                            <ActionButton variant='create' onClick={() => handleCreateNewRole(r)}>CR</ActionButton>
+                            <ActionButton variant='delete' onClick={() => handleDeleteRole(r.name)}>RM</ActionButton>
                         </div>
-                    )}
-
-                </div>
-
-                <div className='Roles__actions'>
-                    <span>actions</span>
-                    {props.roles.map((r, i) => (
-                        <button key={i} className={`role-${i}`} onClick={() => handleCreateNewRole(r)}>CR</button>
-                    ))}
-                </div>
-
-                {!newRole && <button onClick={() => handleCreateNewRole(null)}>CREATE NEW</button>}
+                    </div>
+                ))}
+                {newRole && (<div className='table-row newRow'>
+                    <div className='row-name'>
+                        {newRole &&
+                            <input autoFocus onChange={handleChangeNewRoleName} onBlur={handleOnBlurNewRole} onKeyDown={handleEnterKeyDown} value={newRole.name}></input>}
+                    </div>
+                    <div className='row-field'>
+                        {props.permissions.map((p, i) => (
+                            <div key={i} className='field-item'>
+                                <PermissionButton variant={calcVariant(newRole.permissions[p.field])} onClick={() => handleChangePermission(r.name, p.field)}/>
+                            </div>
+                        ))}
+                    </div>
+                </div>)}
+                {!newRole && 
+                <div>
+                    <div className='table-row row-btn'>
+                        <div className='row-name'>
+                            <button onClick={() => handleCreateNewRole(null)}>Добавить</button>
+                        </div>
+                        <div className='row-description'>
+                            <span>Добавить новую роль со стандартными значениями</span>
+                        </div>
+                    </div>
+                    <div className='table-row row-btn'>
+                        <div className='row-name'>
+                            <button onClick={() => {console.log(props)}}>Создать</button>
+                        </div>
+                        <div className='row-description'>
+                            <span>Нажмите кнопку "Создать" и выберите существующую роль</span>
+                        </div>
+                    </div>
+                </div>}
             </div>
         </div>
-    );
-};
+    )
+    }
 
 export default Roles;
